@@ -6,7 +6,7 @@ export default class Pricing {
     this.currency = currency;
   }
 
-  //Getters and setters for amount
+  // Getters and setters for amount
   get amount() {
     return this._amount;
   }
