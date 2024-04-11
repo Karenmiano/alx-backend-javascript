@@ -5,6 +5,7 @@ export default class HolbertonCourse {
     this.students = students;
   }
 
+  // Getters and Setters for name
   get name() {
     return this._name;
   }
@@ -16,6 +17,7 @@ export default class HolbertonCourse {
     this._name = name;
   }
 
+  // Getters and Setters for length
   get length() {
     return this._length;
   }
@@ -27,12 +29,13 @@ export default class HolbertonCourse {
     this._length = length;
   }
 
+  // Getters and Setters for students
   get students() {
     return this._students;
   }
 
   set students(students) {
-    if (!students.every((item) => typeof item === 'string')) {
+    if (!Array.isArray(students) || !students.every((item) => typeof item === 'string')) {
       throw new TypeError('Students must be an array of strings');
     }
     this._students = students;
