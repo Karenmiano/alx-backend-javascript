@@ -7,10 +7,10 @@ export default class Currency {
   // Getters and Setters for code
   get code() {
     return this._code;
-  } 
+  }
 
   set code(code) {
-    if(typeof code !== 'string') {
+    if (typeof code !== 'string') {
       throw new TypeError('Code must be a string');
     }
     this._code = code;
@@ -22,7 +22,7 @@ export default class Currency {
   }
 
   set name(name) {
-    if(typeof name !== 'string') {
+    if (typeof name !== 'string') {
       throw new TypeError('Name must be a string');
     }
     this._name = name;
