@@ -1,0 +1,2 @@
+# ES6 classes
+Classes were introduced in ES6 to provide a more similar way to follow object-oriented programming patterns as in other OOP languages such as C++ and Java. Javascript used Prototypal inheritance and still uses it in classes hence classes in Javascript are just syntatic sugar for familiarity.
