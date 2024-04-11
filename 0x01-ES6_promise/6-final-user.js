@@ -8,6 +8,6 @@ export default function handleProfileSignUp(firstName, lastName, fileName) {
   return Promise.allSettled([promise1, promise2])
     .then((result) => result.map(({ status, value, reason }) => ({
       status,
-      value: status === 'fulfilled' ? value : reason.message,
+      value: status === 'fulfilled' ? value : `Error: ${reason.message}`,
     })));
 }
