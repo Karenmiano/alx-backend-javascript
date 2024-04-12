@@ -1,23 +1,13 @@
-class Chair {
-  constructor(color, seatHeight, recliningAngle, backSupport, headSupport, padding, armRests, seatSize, isHeightAdjustable, isMovable){
-      this.color = color;
-      this.seatHeight = seatHeight;
-      this.recliningAngle = recliningAngle;
-      this.backSupport = backSupport;
-      this.headSupport = headSupport;
-      this.padding = padding;
-      this.armRests = armRests;
-      this.seatSize = seatSize;
-      this.isHeightAdjustable = isHeightAdjustable;
-      this.isMovable = isMovable;
-  }
-  
-  adjustableHeight() {};
-  adjustAngle(){};
-  moveChair(){};    
-}
+const assert = require('assert');
+var myObj = {};
+var fooSym = Symbol('foo');
+var otherSym = Symbol('bar');
+myObj['foo'] = 'bar';
+myObj[fooSym] = 'baz';
+myObj[otherSym] = 'bing';
+console.log(assert(myObj.foo === 'bar'));
+console.log(assert(myObj[fooSym] === 'baz'));
+console.log(assert(myObj[otherSym] === 'bing'));
+Object.getOwnPropertyNames(myObj); // -> [ 'foo' ]
+Object.getOwnPropertySymbols(myObj); // -> [ Symbol(foo) ]
 
-const newChair = new Chair("Blue","25 inch","20 deg",true,false,"3 inch",true,"16 inch",false,false);
-
-console.dir("Chair Prototype", Chair);
-console.log("Chair Object", newChair);
