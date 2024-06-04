@@ -1,0 +1,6 @@
+nodejs-course
+node_modules
+.env
+EXPRESS-CRASH
+.prettierignore
+*main.js
