@@ -14,7 +14,6 @@ function countStudents(filePath, res) {
           .filter((student) => student[0] !== '');
 
         // log number of students
-        res.write('This is the list of our students\n');
         res.write(`Number of students: ${allStudents.length}\n`);
 
         // extract the fields available
@@ -45,6 +44,7 @@ const app = http.createServer((req, res) => {
     res.end();
   } else if (req.url === '/students') {
     const dbFile = process.argv[2];
+    res.write('This is the list of our students\n');
     countStudents(dbFile, res).then(() => {
       res.end();
     })
