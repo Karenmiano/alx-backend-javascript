@@ -2,26 +2,12 @@ const fs = require('fs');
 const readline = require('readline');
 
 function countStudents(filePath) {
-  const stream = fs.createReadStream(filePath);
-  const reader = readline.createInterface({ input: stream });
-
-  reader.on('error', (error) => {
-    if (error.code === 'ENOENT') {
-      throw new Error('Cannot load the database');
-    }
-  });
-
-  const data = [];
-
-  reader.on('line', (row) => {
-    if (row.length !== 0) {
-      data.push(row.split(','));
-    }
-  });
-
-  reader.on('close', () => {
+  try {
+    const fileData = fs.readFileSync(filePath, 'utf8').split('\n');
     // get all Students
-    const allStudents = data.slice(1);
+    const allStudents = fileData.slice(1)
+      .map((student) => student.split(','))
+      .filter((student) => student[0] !== '');
 
     // log number of students
     console.log(`Number of students: ${allStudents.length}`);
@@ -41,7 +27,9 @@ function countStudents(filePath) {
       studentsInField[field] = studentNames;
       console.log(`Number of students in ${field}: ${studentsInField[field].length}. List: ${studentsInField[field].join(', ')}`);
     }
-  });
+  } catch (error) {
+    throw new Error('Cannot load the database');
+  }
 }
 
 module.exports = countStudents;
