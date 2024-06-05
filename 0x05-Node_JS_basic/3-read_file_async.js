@@ -1,11 +1,11 @@
-const fs = require('fs');
+const { readFile } = require('node:fs/promises');
 
-function countStudents(filePath) {
+async function countStudents(filePath) {
   try {
-    const fileData = fs.readFileSync(filePath, 'utf8').split('\n');
+    const contents = await readFile(filePath, { encoding: 'utf8' });
+    const studentData = contents.split('\n');
 
-    // get all Students
-    const allStudents = fileData.slice(1)
+    const allStudents = studentData.slice(1)
       .map((student) => student.split(','))
       .filter((student) => student[0] !== '');
 
@@ -27,7 +27,7 @@ function countStudents(filePath) {
       studentsInField[field] = studentNames;
       console.log(`Number of students in ${field}: ${studentsInField[field].length}. List: ${studentsInField[field].join(', ')}`);
     }
-  } catch (error) {
+  } catch (err) {
     throw new Error('Cannot load the database');
   }
 }
