@@ -1,5 +1,4 @@
 const fs = require('fs');
-const readline = require('readline');
 
 function countStudents(filePath) {
   try {
